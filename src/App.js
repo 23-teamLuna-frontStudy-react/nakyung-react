@@ -1,24 +1,35 @@
-import styled from "styled-components"
+import styled, {keyframes} from "styled-components";
 
-const Father = styled.div`
+const Wrapper = styled.div`
   display: flex;
 `;
 
-const Btn = styled.button`
-  color:white;
-  background-color: tomato;
-  border:0;
-  border-radius: 15px;
+const rotationAnimation = keyframes`
+  0% {
+    transform:rotate(0deg);
+    border-radius: 0px;
+  }
+  50% {
+    border-radius: 100px;
+  }
+  100%{
+    transform:rotate(360deg);
+    border-radius: 0px;
+  }
 `;
 
-const Link = styled(Btn)``
+const Box = styled.div`
+  height: 200px;
+  width: 200px;
+  background-color: tomato;
+  animation:${rotationAnimation} 1s linear infinite;
+`;
 
 function App() {
   return (
-  <Father as="header">
-    <Btn>Log in</Btn>
-    <Btn as="a" href="/">Log in</Btn>
-  </Father>
+  <Wrapper>
+    <Box />
+  </Wrapper>
   );
 }
 

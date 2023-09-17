@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { loadavg } from "os";
 
 const Container = styled.div`
     padding: 0px 20px;
@@ -16,7 +15,9 @@ const Header = styled.header`
     align-items: center;
 `;
 
-const CoinsList = styled.ul``;
+const CoinsList = styled.ul`
+    padding: 0;
+`;
 
 const Coin = styled.li`
     background-color: white;
@@ -24,9 +25,10 @@ const Coin = styled.li`
     border-radius: 15px;
     margin-bottom: 10px;
     a{
+        display: flex;
+        align-items: center;
         padding: 20px;
         transition: color 0.1s ease-in;
-        display: block;
     }
     &:hover {
         a {
@@ -43,7 +45,13 @@ const Title = styled.h1`
 const Loader = styled.span`
     text-align: center;
     display: block;
-`
+`;
+
+const Img = styled.img`
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+`;
 
 interface CoinInterface {
         id: string,
@@ -77,7 +85,12 @@ function Coins() {
                 <CoinsList>
                     {coins.map((coin) => (
                         <Coin key={coin.id}>
-                            <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
+                            <Link to={`/${coin.id}`} state = {{name: coin.name}}>
+                                <Img 
+                                    src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                                />
+                                {coin.name} &rarr;
+                            </Link>
                         </Coin>
                     ))}
                 </CoinsList>

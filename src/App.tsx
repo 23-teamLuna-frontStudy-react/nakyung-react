@@ -61,7 +61,7 @@ body {
 }
 a {
   text-decoration: none;
-  color:${(props) => props.theme.textColor};
+  color: inherit;
 }
 `;
 

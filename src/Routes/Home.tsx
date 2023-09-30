@@ -5,6 +5,7 @@ import { makeImagePath } from "../utils";
 import { AnimatePresence, motion, useViewportScroll } from "framer-motion";
 import { useState } from "react";
 import { useNavigate, useMatch, PathMatch } from "react-router-dom";
+import { useScroll } from "framer-motion";
 
 const Wrapper = styled.div`
   background: black;
@@ -160,8 +161,8 @@ const offset = 6;
 
 function Home() {
   const history = useNavigate();
-  const bigMovieMatch: PathMatch | null = useMatch("/movies/:id");
-  const { scrollY } = useViewportScroll();
+  const bigMovieMatch = useMatch("/movies/:movieId");
+  const { scrollY } = useScroll();
   const { data, isLoading } = useQuery<IGetMoviesResult>(
     ["movies", "nowPlaying"],
     getMovies
@@ -184,7 +185,9 @@ function Home() {
   const onOverlayClick = () => history("/");
   const clickedMovie =
     bigMovieMatch?.params.movieId &&
-    data?.results.find((movie) => movie.id === +bigMovieMatch.params.movieId);
+    data?.results.find(
+      (movie) => movie.id + "" === bigMovieMatch.params.movieId
+    );
   return (
     <Wrapper>
       {isLoading ? (

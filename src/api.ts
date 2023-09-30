@@ -8,7 +8,6 @@ interface IMovie {
   title: string;
   overview: string;
 }
-
 export interface IGetMoviesResult {
   dates: {
     maximum: string;

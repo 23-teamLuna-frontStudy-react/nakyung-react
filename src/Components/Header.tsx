@@ -20,10 +20,12 @@ const Nav = styled(motion.nav)`
   padding: 20px 60px;
   color: white;
 `;
+
 const Col = styled.div`
   display: flex;
   align-items: center;
 `;
+
 const Logo = styled(motion.svg)`
   margin-right: 50px;
   width: 95px;
@@ -34,10 +36,12 @@ const Logo = styled(motion.svg)`
     stroke: white;
   }
 `;
+
 const Items = styled.ul`
   display: flex;
   align-items: center;
 `;
+
 const Item = styled.li`
   margin-right: 20px;
   color: ${(props) => props.theme.white.darker};
@@ -50,6 +54,7 @@ const Item = styled.li`
     color: ${(props) => props.theme.white.lighter};
   }
 `;
+
 const Search = styled.span`
   color: white;
   svg {
@@ -59,6 +64,7 @@ const Search = styled.span`
   align-items: center;
   position: relative;
 `;
+
 const Circle = styled(motion.span)`
   position: absolute;
   width: 5px;
@@ -70,6 +76,7 @@ const Circle = styled(motion.span)`
   margin: 0 auto;
   background-color: ${(props) => props.theme.red};
 `;
+
 const Input = styled(motion.input)`
   transform-origin: right center;
   position: absolute;
@@ -102,6 +109,7 @@ const logoVariants: Variants = {
     },
   },
 };
+
 function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const homeMatch = useMatch("/");
@@ -178,4 +186,5 @@ function Header() {
     </Nav>
   );
 }
+
 export default Header;
